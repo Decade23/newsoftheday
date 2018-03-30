@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <h1>Learning Jquery</h1>
+    	<div class="container-fluid">
+    		<div class="row">
+    			<div class="col-sm-6 col-sm-offset-6">
+    				<p class="answer"></p>
+    				<button class="ask btn btn-primary">How About Jquery?</button>
+    			</div>
+    		</div>
+    	</div>
+    	<hr>
+<!--     	<div class="container-fluid">
+    		<div class="row">
+    			<div class="col-sm-6 left heading2">
+	    			<button class="btn btn-success target" id="target1">#target 1</button>
+	    			<button class="btn btn-default target" id="target2">#target 2</button>
+	    			<button class="btn btn-default target" id="target3">#target 3</button>
+    			</div>
+
+    			<div class="col-sm-6 right heading2right">
+	    			<button class="btn btn-default target" id="target4">#target 4</button>
+	    			<button class="btn btn-default target" id="target5">#target 5</button>
+	    			<button class="btn btn-default target" id="target6">#target 6</button>
+    			</div>
+
+    		</div>
+    	</div>
+ -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- <script src="index.js"></script> -->
+    <!-- <script src="coba.js"></script> -->
+    <script>
+    	// event click
+    	$(document).ready(function() {
+    		var url = 'http://hn.algolia.com/api/v1/search?query=javascript';
+    		$.getJSON(url,function(data) {
+    			var allNews = data.hits;
+    			var eachNews = '';
+    			allNews.map(function(item, index, array) {
+    				$('.ask').on('click', function() {
+    					eachNews += '<div>';
+    					eachNews += item.title;
+    					eachNews += '<div>';
+    					$('.answer').html(eachNews);
+    				});
+    			})
+    		});
+    	});
+    </script>
+
+    <script>
+    	// geolocation data
+    	if (navigator.geolocation) {
+    		navigator.geolocation.getCurrentPosition(function(position)
+    		{
+    			$('.answer').html('latitude: ' + position.coords.latitude + '<br />' + 'longitude: ' + position.coords.longitude);
+    		}); 	
+    	}
+    </script>
+    
+  </body>
+</html>
